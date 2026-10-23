@@ -42,3 +42,4 @@ Run `npm run build` and publish the `dist` folder. Asset paths are relative (`ba
   - `Reveal`: blocks ease up into place on scroll
 - Project cards (`ProjectCard` in `src/App.jsx`) scroll in, lift on hover, fan their phone screens out, and drift with a light parallax.
 - Everything respects the visitor's "reduce motion" setting.
+# portfolio
