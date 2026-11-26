@@ -9,12 +9,6 @@ const Arrow = ({ size = 16, diag = false }) => (
   </svg>
 );
 
-const LockIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-    <rect x="3" y="7" width="10" height="7" rx="1.5" /><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" />
-  </svg>
-);
-
 const ServiceIcon = ({ name }) => {
   const p = { width: 32, height: 32, viewBox: '0 0 32 32', fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, 'aria-hidden': true };
   if (name === 'phone') return (<svg {...p}><rect x="9" y="3" width="14" height="26" rx="3" /><path d="M14 25h4" /></svg>);
@@ -173,8 +167,17 @@ function ProjectCard({ p, index }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
 
-  const content = (
-    <>
+  return (
+    <motion.article
+      ref={ref}
+      className={`card card-${p.layout}${p.flip ? ' flip' : ''}`}
+      initial={{ opacity: 0.2, y: 60, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.9, ease, delay: p.layout === 'half' ? (index % 2) * 0.12 : 0 }}
+      whileHover="hover"
+      animate="rest"
+    >
       <Visual visual={p.visual} progress={scrollYProgress} />
       <div className="card-body">
         {p.status ? (
@@ -199,37 +202,13 @@ function ProjectCard({ p, index }) {
           </div>
         )}
         {p.layout === 'wide' ? (
-          <a href="#contact" className="btn btn-line btn-on-dark">Work with DUGS <Arrow /></a>
+          <a href={p.url} target="_blank" rel="noreferrer" className="btn btn-line btn-on-dark">{p.linkLabel} <Arrow diag /></a>
+        ) : p.url ? (
+          <a href={p.url} target="_blank" rel="noreferrer" className="text-link">{p.linkLabel} <Arrow diag /></a>
         ) : (
           <a href="#contact" className="text-link">Ask me about this project <Arrow /></a>
         )}
       </div>
-    </>
-  );
-
-  return (
-    <motion.article
-      ref={ref}
-      className={`card card-${p.layout}${p.flip ? ' flip' : ''}${p.private ? ' card-private' : ''}`}
-      initial={{ opacity: 0.2, y: 60, scale: 0.98 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.9, ease, delay: p.layout === 'half' ? (index % 2) * 0.12 : 0 }}
-      whileHover="hover"
-      animate="rest"
-    >
-      {p.private ? (
-        <>
-          {/* Blurred content stays for the look, but is hidden from screen readers and the tab order. */}
-          <div className="private-content" inert="">{content}</div>
-          <div className="private-veil">
-            <div className="private-note">
-              <p className="eyebrow mono"><LockIcon /> Private project</p>
-              <a href="#contact" className="text-link">Ask me for a walkthrough <Arrow /></a>
-            </div>
-          </div>
-        </>
-      ) : content}
     </motion.article>
   );
 }

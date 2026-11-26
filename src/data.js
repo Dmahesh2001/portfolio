@@ -48,7 +48,7 @@ export const projects = [
     id: 'poolpm',
     layout: 'feature',
     flip: true,
-    private: true, // whole card is blurred; screenshots are pre-blurred so the originals never ship
+    // Screenshots are pre-blurred files, so keep the originals out of public/.
     eyebrow: 'Web platform · CRM + AI agent · Design + Next.js',
     title: 'PoolPM Builder Portal',
     body: 'A CRM and project manager for pool builders, with an AI agent, DispatchIQ, that can set up the workspace for you through chat or voice.',
@@ -90,6 +90,26 @@ export const projects = [
     },
   },
   {
+    id: 'yugmen',
+    layout: 'feature',
+    flip: true,
+    eyebrow: 'Website · Menswear · Design',
+    title: 'Yugmen',
+    body: 'A website I designed for a European multi-brand menswear store in Hyderabad, where a stylist helps you put your looks together.',
+    bullets: [
+      'Full-screen editorial hero and curated looks',
+      'Booking for a quick phone or video call with a stylist',
+      'Brand story, plus store address, hours and directions',
+    ],
+    url: 'https://yugmen-demo.vercel.app/',
+    linkLabel: 'View the demo site',
+    visual: {
+      type: 'browser',
+      tone: 'sky',
+      images: [{ src: img('yugmen-home'), alt: 'Yugmen homepage: a model in a varsity jacket on a deep blue backdrop above the Yugmen wordmark' }],
+    },
+  },
+  {
     id: 'clawcouch',
     layout: 'half',
     eyebrow: 'Mobile app · React Native · Pet care community',
@@ -119,13 +139,15 @@ export const projects = [
   {
     id: 'dugs',
     layout: 'wide',
-    status: 'In progress · My agency',
+    eyebrow: 'Website · My agency',
     title: 'DUGS — Developers United',
-    body: 'The website for my own end-to-end development studio. Ten pages planned in Figma (home, work, case study, method, studio, working with us, contact and more), plus a motion and interaction system.',
+    body: 'My own design and development studio in Hyderabad, working with clients worldwide on web platforms, mobile apps, AI agents and edge systems.',
+    url: 'https://dugs.in/',
+    linkLabel: 'Visit dugs.in',
     visual: {
       type: 'browser',
       tone: 'ink',
-      images: [{ src: img('dugs-home'), alt: "DUGS homepage wireframe: The building got easy. The deciding didn't." }],
+      images: [{ src: img('dugs-home'), alt: 'DUGS homepage: Product design and engineering for teams ready to ship' }],
     },
   },
 ];
