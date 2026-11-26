@@ -48,6 +48,7 @@ export const projects = [
     id: 'poolpm',
     layout: 'feature',
     flip: true,
+    private: true, // whole card is blurred; screenshots are pre-blurred so the originals never ship
     eyebrow: 'Web platform · CRM + AI agent · Design + Next.js',
     title: 'PoolPM Builder Portal',
     body: 'A CRM and project manager for pool builders, with an AI agent, DispatchIQ, that can set up the workspace for you through chat or voice.',
@@ -61,8 +62,8 @@ export const projects = [
       type: 'stack',
       tone: 'ink',
       images: [
-        { src: img('poolpm-get-started'), alt: 'PoolPM Builder Portal home: Get started checklist showing 4 of 7 setup steps complete' },
-        { src: img('poolpm-ai-drawer'), alt: 'PoolPM with the DispatchIQ assistant drawer open, drafting team invites from a chat' },
+        { src: img('poolpm-get-started-blurred'), alt: '' },
+        { src: img('poolpm-ai-drawer-blurred'), alt: '' },
       ],
     },
   },
